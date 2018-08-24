@@ -1,0 +1,76 @@
+<div class="container">
+  <table class="table">
+    <tr style="font-weight:bold;">
+      <td>Task:</td>
+      <td colspan="3">
+        <input type="text" id="task" style="width: 100%;" [(ngModel)]="taskName" (keyup)="search()" />
+      </td>
+      <td>Parent Task:</td>
+      <td colspan="3">
+        <input type="text" id="parenttask" style="width: 100%;" [(ngModel)]="parentTaskName" (keyup)="search()"   />
+      </td>
+    </tr>
+    <tr style="font-weight:bold;">
+      <td>
+        Priority From:
+      </td>
+      <td>
+        <input type="text" id="priFrom" [(ngModel)]="priFrom" (keyup)="search()"/>
+      </td>
+      <td>
+        Priority To:
+      </td>
+      <td>
+        <input type="text" id="priTo" [(ngModel)]="priTo" (keyup)="search()" />
+      </td>
+      <td>
+        Start Date:
+      </td>
+      <td>
+        <input type="text" id="startDt" [(ngModel)]="dtFrom" (keyup)="search()"  />
+      </td>
+      <td>
+        End Date:
+      </td>
+      <td>
+        <input type="text" id="endDt" [(ngModel)]="dtTo"  (keyup)="search()" />
+      </td>
+    </tr>
+  </table>
+</div>
+<hr/>
+
+<div class="container">
+  <table class="table" *ngFor="let tObj of lstTask">
+    <tr>
+      <td>Task</td>
+      <td>Parent</td>
+      <td>Priority</td>
+      <td>Start</td>
+      <td>End</td>
+    </tr>
+    <tr>
+      <td>
+        {{tObj.TaskName}}
+      </td>
+      <td>
+        {{tObj.ParentTaskName}}
+      </td>
+      <td>
+        {{tObj.Priority}}
+      </td>
+      <td>
+        {{tObj.StartDate  | date:'yyyy-MM-dd'}}
+      </td>
+      <td>
+        {{tObj.EndDate | date:'yyyy-MM-dd'}}
+      </td>
+      <td>
+        <input type="button" value="Edit Task" (click)="onClick(tObj.TaskID)" />
+      </td>
+      <td>
+        <input type="button" value="Cancel Task" />
+      </td>
+    </tr>
+  </table>
+</div>

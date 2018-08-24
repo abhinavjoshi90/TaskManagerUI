@@ -1,0 +1,54 @@
+
+<div class="container">
+    <table class="table">
+      <tr>
+        <td>Task:</td>
+        <td>
+          <input type="text" id="task" [(ngModel)]="taskObj.TaskName">
+        </td>
+      </tr> 
+      <tr>
+        <td> Priority:</td>
+        <td>
+          <span class="text-small">0</span>
+          <mat-slider min="0" max="30" step="1" [(ngModel)]="taskObj.Priority"></mat-slider>
+          <span class="text-small">30</span>
+        </td>
+      </tr>
+      <tr>
+          <td>Parent Task:</td>
+          <td>
+            <input type="text" id="parenttask"  [(ngModel)]="taskObj.ParentTaskName">
+          </td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td>
+                <input type="date"  [ngModel]="taskObj.StartDate | date:'yyyy-MM-dd'" 
+                (ngModelChange)="taskObj.StartDate = $event">
+            </td>
+          </tr>
+          <tr>
+              <td>End Date:</td>
+              <td>
+                  <input type="date"  [ngModel]="taskObj.EndDate | date:'yyyy-MM-dd'" 
+                  (ngModelChange)="taskObj.EndDate = $event">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="button" id="updateTask"  value="Update" (click)="updateTask()"/>
+              </td>
+              <td>
+                  <input type="button" id="cancelTask" value="Cancel"  (click)="cancelTask()"/>
+                </td>
+            </tr>
+    </table>
+  </div>
+
+  <div>
+    <span>
+      {{Message}}
+    </span>
+  </div>
+  
