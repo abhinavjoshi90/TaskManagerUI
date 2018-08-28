@@ -22,15 +22,18 @@ export class ViewComponent implements OnInit {
   priTo: number = null;
   dtFrom: string;
   dtTo: string;
-  constructor(private router: Router, private _taskSvc: TaskService, private datepipe: DatePipe) {
+  constructor(private router: Router, private _taskSvc: TaskService) {
 
-    _taskSvc.getAllTasks().subscribe(res=>this.lstTask=res);
-  //  this.lstAllTask = this.lstTask;
+    this._taskSvc.getAllTasks().subscribe(res => this.lstTask = res);
+    //  this.lstAllTask = this.lstTask;
   }
 
   ngOnInit() {
     this.lstTask1 = this.lstTask;
-
+  }
+  
+  getAllTasks(): Task[]{
+    return this.lstTask;
   }
 
   onClick(Id) {
